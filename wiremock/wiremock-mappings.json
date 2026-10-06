@@ -197,7 +197,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"results\": {\n    \"register\": [\n      {\n        \"site\": \"example-shop.com\",\n        \"exists\": true\n      }\n    ],\n    \"breach\": [\n      {\n        \"name\": \"Example 2021\",\n        \"date\": \"2021-04-02\"\n      }\n    ],\n    \"api\": [\n      {\n        \"key\": \"value\"\n      }\n    ]\n  }\n}",
+        "body": "{\n  \"results\": {\n    \"register\": [\n      {\n        \"site\": \"example-shop.com\",\n        \"exists\": true\n      }\n    ],\n    \"breach\": [\n      {\n        \"name\": \"Example 2021\",\n        \"date\": \"2021-04-02\"\n      }\n    ],\n    \"api\": [\n      {\n        \"key\": \"value\"\n      }\n    ]\n  },\n  \"_meta\": {\n    \"plan\": \"investigator\",\n    \"lookups_left\": 739\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }

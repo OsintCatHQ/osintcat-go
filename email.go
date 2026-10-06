@@ -48,10 +48,12 @@ func (l *LookupEmailRequest) SetPurpose(purpose string) {
 // Results for the same address may come from a cache for up to 15 minutes.
 var (
 	emailOsintResponseFieldResults = big.NewInt(1 << 0)
+	emailOsintResponseFieldMeta    = big.NewInt(1 << 1)
 )
 
 type EmailOsintResponse struct {
 	Results *EmailOsintResults `json:"results,omitempty" url:"results,omitempty"`
+	Meta    *UsageMeta         `json:"_meta,omitempty" url:"_meta,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -66,6 +68,13 @@ func (e *EmailOsintResponse) GetResults() *EmailOsintResults {
 		return nil
 	}
 	return e.Results
+}
+
+func (e *EmailOsintResponse) GetMeta() *UsageMeta {
+	if e == nil {
+		return nil
+	}
+	return e.Meta
 }
 
 func (e *EmailOsintResponse) GetExtraProperties() map[string]interface{} {
@@ -87,6 +96,13 @@ func (e *EmailOsintResponse) require(field *big.Int) {
 func (e *EmailOsintResponse) SetResults(results *EmailOsintResults) {
 	e.Results = results
 	e.require(emailOsintResponseFieldResults)
+}
+
+// SetMeta sets the Meta field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (e *EmailOsintResponse) SetMeta(meta *UsageMeta) {
+	e.Meta = meta
+	e.require(emailOsintResponseFieldMeta)
 }
 
 func (e *EmailOsintResponse) UnmarshalJSON(data []byte) error {

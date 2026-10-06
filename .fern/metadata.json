@@ -9,7 +9,7 @@
     "packageName": "osintcat",
     "maxRetries": 0
   },
-  "originGitCommit": "792dc6cbf32f5af883707d156ec75ed19ef0a207",
+  "originGitCommit": "699182b6022c9f0c33a0cd719db73533d1c837f7",
   "originGitCommitIsDirty": true,
   "invokedBy": "manual",
   "requestedVersion": "1.1.0",

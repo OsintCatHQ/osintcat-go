@@ -42,12 +42,12 @@ func NewClient(options *core.RequestOptions) *Client {
 //
 // A request without a purpose (parameter `purpose`, header `X-Purpose`, or `Purpose: ...` at the end of your User-Agent) is refused with `400 USER_AGENT_IDENTITY_REQUIRED`.
 //
-// Does not use your daily allowance. Each lookup that finds something is charged to your balance (the module's page in the dashboard shows the price); a lookup that finds nothing, or fails, is not charged.
+// Counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, the lookup can continue at a per-lookup price charged to your balance (the module's page in the dashboard shows the price); a lookup that finds nothing is not charged.
 //
 // Errors:
 // - 400 `USER_AGENT_IDENTITY_REQUIRED`: No purpose given.
 // - 401 `API key required`: No `X-API-KEY` header.
-// - 402 `INSUFFICIENT_BALANCE`: Your balance does not cover the lookup.
+// - 402 `INSUFFICIENT_BALANCE`: The allowance is used up and your balance does not cover the lookup.
 // - 424 `Provider Error`: The lookup could not be completed. Not charged.
 //
 // Docs: https://docs.osintcat.net/api-reference/endpoint/email-osint
