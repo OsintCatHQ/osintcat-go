@@ -1,0 +1,16 @@
+{
+  "cliVersion": "5.112.0",
+  "generatorName": "fernapi/fern-go-sdk",
+  "generatorVersion": "1.47.2",
+  "generatorConfig": {
+    "module": {
+      "path": "github.com/OsintCatHQ/osintcat-go"
+    },
+    "packageName": "osintcat",
+    "maxRetries": 0
+  },
+  "originGitCommitIsDirty": true,
+  "invokedBy": "manual",
+  "requestedVersion": "1.0.0",
+  "sdkVersion": "v1.0.0"
+}

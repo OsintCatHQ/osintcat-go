@@ -1,0 +1,891 @@
+{
+  "mappings": [
+    {
+      "id": "c2f6412c-28f8-4c83-8503-8a01ae21971f",
+      "name": "Account - default",
+      "request": {
+        "urlPathTemplate": "/api/user",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"account_info\": {\n    \"username\": \"analyst\",\n    \"email\": \"analyst@example.com\",\n    \"plan\": \"Investigator\",\n    \"plan_expires\": \"2026-11-05T09:12:44\"\n  },\n  \"usage\": {\n    \"request_limit_daily\": 750,\n    \"requests_remaining_today\": 742,\n    \"api_access\": true\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c2f6412c-28f8-4c83-8503-8a01ae21971f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "58037027-4582-4870-9b02-1cab1eacb1ee",
+      "name": "Modules - default",
+      "request": {
+        "urlPathTemplate": "/api/modules",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"modules\": [\n    {\n      \"id\": \"id\",\n      \"name\": \"name\",\n      \"category\": \"category\",\n      \"enabled\": true,\n      \"access_level\": \"access_level\",\n      \"allowed_plans\": [\n        {\n          \"key\": \"value\"\n        },\n        {\n          \"key\": \"value\"\n        }\n      ],\n      \"accessible\": true,\n      \"locked\": true\n    },\n    {\n      \"id\": \"id\",\n      \"name\": \"name\",\n      \"category\": \"category\",\n      \"enabled\": true,\n      \"access_level\": \"access_level\",\n      \"allowed_plans\": [\n        {\n          \"key\": \"value\"\n        },\n        {\n          \"key\": \"value\"\n        }\n      ],\n      \"accessible\": true,\n      \"locked\": true\n    }\n  ],\n  \"user\": {\n    \"plan\": \"plan\",\n    \"role\": \"role\",\n    \"beta_access\": true\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "58037027-4582-4870-9b02-1cab1eacb1ee",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "a4176961-6298-46f7-b084-852558495864",
+      "name": "Breach Lookup - default",
+      "request": {
+        "urlPathTemplate": "/api/breach",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "user@example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"api\": \"OsintCat\",\n  \"elapsed_ms\": 1843.27,\n  \"timestamp\": \"Oct 6th 09:41\",\n  \"results_count\": 1,\n  \"breach_data\": [\n    {\n      \"email\": \"user@example.com\",\n      \"username\": \"user123\",\n      \"password\": \"hunter2\",\n      \"source_db\": \"EXAMPLE_COM_2019\"\n    }\n  ],\n  \"_meta\": {\n    \"plan\": \"investigator\",\n    \"lookups_left\": 741\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a4176961-6298-46f7-b084-852558495864",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "7ab8548a-8a47-4caf-a631-5864cf0ce76e",
+      "name": "Database Search - default",
+      "request": {
+        "urlPathTemplate": "/api/database-search",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "user@example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"results\": [\n    {\n      \"url\": \"https://accounts.example.org/login\",\n      \"login\": \"user@example.com\",\n      \"password\": \"hunter2\",\n      \"date\": \"2025-11-02\"\n    }\n  ],\n  \"results_count\": 1,\n  \"query\": \"user@example.com\",\n  \"type\": \"email\",\n  \"execution_time\": \"0.84s\",\n  \"status\": \"success\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "7ab8548a-8a47-4caf-a631-5864cf0ce76e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "a72fafdd-5734-492b-8bc5-3c8f7163ea52",
+      "name": "Domain Lookup - default",
+      "request": {
+        "urlPathTemplate": "/api/domain",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n  {\n    \"email\": \"jane@example.com\",\n    \"password\": \"hunter2\",\n    \"breach\": \"Example 2021\"\n  }\n]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a72fafdd-5734-492b-8bc5-3c8f7163ea52",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "9a06334f-0e22-48eb-922d-10f4a2897e9d",
+      "name": "Email OSINT - default",
+      "request": {
+        "urlPathTemplate": "/api/email-osint",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "user@example.com"
+          },
+          "purpose": {
+            "equalTo": "fraud prevention"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"results\": {\n    \"register\": [\n      {\n        \"site\": \"example-shop.com\",\n        \"exists\": true\n      }\n    ],\n    \"breach\": [\n      {\n        \"name\": \"Example 2021\",\n        \"date\": \"2021-04-02\"\n      }\n    ],\n    \"api\": [\n      {\n        \"key\": \"value\"\n      }\n    ]\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9a06334f-0e22-48eb-922d-10f4a2897e9d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "11c01555-192a-4775-9331-e18fa601caad",
+      "name": "Phone OSINT - default",
+      "request": {
+        "urlPathTemplate": "/api/phone-osint",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "+4915112345678"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"module\": \"phone\",\n  \"query\": \"+4915112345678\",\n  \"found\": true,\n  \"risk\": {\n    \"score\": 12,\n    \"level\": \"low\"\n  },\n  \"summary\": [\n    {\n      \"label\": \"Number\",\n      \"value\": \"+4915112345678\"\n    },\n    {\n      \"label\": \"Valid number\",\n      \"value\": \"Yes\"\n    },\n    {\n      \"label\": \"Carrier\",\n      \"value\": \"Telekom Deutschland\"\n    },\n    {\n      \"label\": \"Line type\",\n      \"value\": \"Mobile\"\n    }\n  ],\n  \"sections\": [\n    {\n      \"key\": \"value\"\n    }\n  ],\n  \"raw\": {\n    \"key\": \"value\"\n  },\n  \"_meta\": {\n    \"plan\": \"investigator\",\n    \"lookups_left\": 740\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "11c01555-192a-4775-9331-e18fa601caad",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "14a6dcf0-25ab-4560-9e78-5fc9332d9310",
+      "name": "IP Lookup - default",
+      "request": {
+        "urlPathTemplate": "/api/ip",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "8.8.8.8"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"ipleaks\": {\n    \"ip_str\": \"8.8.8.8\",\n    \"ports\": [\n      53,\n      443\n    ],\n    \"hostnames\": [\n      \"dns.google\"\n    ],\n    \"org\": \"Google LLC\"\n  },\n  \"ipinfo\": {\n    \"ipAddress\": \"8.8.8.8\",\n    \"countryName\": \"United States of America\",\n    \"countryCode\": \"US\",\n    \"cityName\": \"Mountain View\",\n    \"asn\": \"15169\",\n    \"asnOrganization\": \"Google LLC\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "14a6dcf0-25ab-4560-9e78-5fc9332d9310",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "53d773bb-1196-45f1-a5da-9e0ad3116406",
+      "name": "DNS Resolver - default",
+      "request": {
+        "urlPathTemplate": "/api/dns-resolver",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "example.com,osintcat.net"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"example.com\": \"93.184.215.14\",\n  \"osintcat.net\": \"104.21.32.1\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "53d773bb-1196-45f1-a5da-9e0ad3116406",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "3b2b03fc-4048-4cc8-b2ef-f1cca493793f",
+      "name": "Minecraft Player - default",
+      "request": {
+        "urlPathTemplate": "/api/minecraft",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "Notch"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"query\": \"notch\",\n  \"uuid\": \"069a79f444e94726a5befca90e38aaf5\",\n  \"username\": \"Notch\",\n  \"name-history\": [\n    {\n      \"name\": \"Notch\"\n    }\n  ],\n  \"capes\": [\n    {\n      \"key\": \"value\"\n    }\n  ],\n  \"skinHistory\": [\n    {\n      \"key\": \"value\"\n    }\n  ],\n  \"results\": {\n    \"key\": \"value\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3b2b03fc-4048-4cc8-b2ef-f1cca493793f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "079bd701-6730-4f78-89ad-880256dbe11f",
+      "name": "Minecraft Leak Search - default",
+      "request": {
+        "urlPathTemplate": "/api/minecraft-lookup",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "Notch"
+          },
+          "type": {
+            "equalTo": "username"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"key\": \"value\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "079bd701-6730-4f78-89ad-880256dbe11f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "ff463d63-0ca1-491c-a1bf-b724842db924",
+      "name": "Minecraft Profile - default",
+      "request": {
+        "urlPathTemplate": "/api/minecraft-lookup-v2",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "username": {
+            "equalTo": "Notch"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"taken\": true,\n  \"error\": \"error\",\n  \"ExtraData\": {\n    \"Username\": \"Notch\",\n    \"UUID\": \"069a79f444e94726a5befca90e38aaf5\",\n    \"NameHistory\": [\n      {\n        \"key\": \"value\"\n      }\n    ],\n    \"LabyUsername\": \"Notch\",\n    \"ProfilePicUrl\": \"https://mc-heads.net/avatar/069a79f444e94726a5befca90e38aaf5\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ff463d63-0ca1-491c-a1bf-b724842db924",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "9075ec31-6817-45fd-984a-165ab801c7fc",
+      "name": "Steam Profile - default",
+      "request": {
+        "urlPathTemplate": "/api/steam-lookup",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "username": {
+            "equalTo": "gaben"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"taken\": true,\n  \"error\": \"error\",\n  \"ExtraData\": {\n    \"Username\": \"gaben\",\n    \"DisplayName\": \"Rabscuttle\",\n    \"RealName\": \"RealName\",\n    \"ProfileUrl\": \"https://steamcommunity.com/profiles/76561197960287930\",\n    \"AvatarUrl\": \"AvatarUrl\",\n    \"ProfileState\": 1.1,\n    \"Visibility\": 3,\n    \"TimeCreated\": 1063407589,\n    \"LastLogoff\": 1.1,\n    \"CountryCode\": \"US\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9075ec31-6817-45fd-984a-165ab801c7fc",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "3f5ab13f-c0a0-4521-b7d6-35fa493b77c5",
+      "name": "Xbox Profile - default",
+      "request": {
+        "urlPathTemplate": "/api/xbox-lookup",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "username": {
+            "equalTo": "Major Nelson"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"taken\": true,\n  \"error\": \"error\",\n  \"ExtraData\": {\n    \"Gamertag\": \"Major Nelson\",\n    \"XUID\": \"2584878536129841\",\n    \"ProfileUrl\": \"ProfileUrl\",\n    \"AvatarUrl\": \"AvatarUrl\",\n    \"GamerScore\": \"159520\",\n    \"AccountTier\": \"Gold\",\n    \"Bio\": \"Bio\",\n    \"Location\": \"Location\",\n    \"Tenure\": \"20\",\n    \"IsVerified\": true\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3f5ab13f-c0a0-4521-b7d6-35fa493b77c5",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "4acf253f-142b-4983-a4da-03f39ef754df",
+      "name": "Twitch Profile - default",
+      "request": {
+        "urlPathTemplate": "/api/twitch",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "username": {
+            "equalTo": "xqc"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"taken\": true,\n  \"error\": \"error\",\n  \"ExtraData\": {\n    \"Username\": \"xqc\",\n    \"DisplayName\": \"xQc\",\n    \"UserID\": \"71092938\",\n    \"Description\": \"Description\",\n    \"ProfilePicUrl\": \"ProfilePicUrl\",\n    \"Followers\": 12345678,\n    \"CreatedAt\": \"2014-09-12T23:50:05Z\",\n    \"BroadcasterType\": \"partner\",\n    \"Banned\": false,\n    \"IsPartner\": true,\n    \"IsAffiliate\": true,\n    \"ProfileUrl\": \"https://twitch.tv/xqc\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4acf253f-142b-4983-a4da-03f39ef754df",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "473a3bc8-b7a8-45be-a38a-8af2ae8cacbc",
+      "name": "Chess.com Lookup - default",
+      "request": {
+        "urlPathTemplate": "/api/chess-osint",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "hikaru"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"found\": true,\n  \"query\": \"hikaru\",\n  \"resolved_username\": \"hikaru\",\n  \"live_profile\": {\n    \"username\": \"hikaru\",\n    \"country\": \"US\",\n    \"joined\": 1389043258\n  },\n  \"live_stats\": {\n    \"rapid\": 2850,\n    \"blitz\": 3300,\n    \"bullet\": 3200,\n    \"fide\": 2800\n  },\n  \"live_clubs\": [\n    {\n      \"key\": \"value\"\n    }\n  ],\n  \"leak_records\": [\n    {\n      \"key\": \"value\"\n    }\n  ],\n  \"leak_count\": 0\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "473a3bc8-b7a8-45be-a38a-8af2ae8cacbc",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "7932aa93-a2b1-47d9-9cb4-e02971900410",
+      "name": "GitHub Profile - default",
+      "request": {
+        "urlPathTemplate": "/api/github-lookup",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "username": {
+            "equalTo": "octocat"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"taken\": true,\n  \"error\": \"error\",\n  \"ExtraData\": {\n    \"Username\": \"octocat\",\n    \"Name\": \"The Octocat\",\n    \"Bio\": \"Bio\",\n    \"Location\": \"San Francisco\",\n    \"Company\": \"Company\",\n    \"Blog\": \"Blog\",\n    \"Email\": \"Email\",\n    \"Twitter\": \"Twitter\",\n    \"Followers\": 21000,\n    \"Following\": 1.1,\n    \"PublicRepos\": 8,\n    \"CreatedAt\": \"2011-01-25T18:44:36Z\",\n    \"ProfileUrl\": \"https://github.com/octocat\",\n    \"Repositories\": [\n      {\n        \"key\": \"value\"\n      }\n    ]\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "7932aa93-a2b1-47d9-9cb4-e02971900410",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "35547d7e-6454-4040-acbb-df670b95cd15",
+      "name": "Reddit Profile - default",
+      "request": {
+        "urlPathTemplate": "/api/reddit",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "username": {
+            "equalTo": "unidan"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"taken\": true,\n  \"error\": \"error\",\n  \"ExtraData\": {\n    \"Username\": \"unidan\",\n    \"DisplayName\": \"unidan\",\n    \"CommentKarma\": 1000000,\n    \"LinkKarma\": 50000,\n    \"TotalKarma\": 1050000,\n    \"CreatedAt\": 1272498120,\n    \"IsVerified\": true,\n    \"IsMod\": true,\n    \"IsSuspended\": true,\n    \"ProfileUrl\": \"https://reddit.com/user/unidan\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "35547d7e-6454-4040-acbb-df670b95cd15",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "e9e50fea-6620-4871-9ac0-2d8e8459b144",
+      "name": "X (Twitter) Profile - default",
+      "request": {
+        "urlPathTemplate": "/api/twitter-osint",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "jack"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"status\": \"success\",\n  \"profile\": {\n    \"id\": \"12\",\n    \"username\": \"jack\",\n    \"name\": \"jack\",\n    \"created_at\": \"2006-03-21\",\n    \"followers\": 6500000,\n    \"following\": 3,\n    \"tweets_count\": 30000,\n    \"description\": \"description\",\n    \"profile_image\": \"profile_image\",\n    \"banner_image\": \"banner_image\",\n    \"verified\": true\n  },\n  \"recent_tweets_scraped\": 30,\n  \"ai_analysis\": {\n    \"dominant_language\": \"English\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e9e50fea-6620-4871-9ac0-2d8e8459b144",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "0ade2523-9b5f-4846-905f-ac3f45e6002a",
+      "name": "TikTok Share Link - default",
+      "request": {
+        "urlPathTemplate": "/api/tiktok-resolver",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "link": {
+            "equalTo": "https://vm.tiktok.com/ZMexample/"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"sharer\": {\n    \"key\": \"value\"\n  },\n  \"share_info\": {\n    \"key\": \"value\"\n  },\n  \"video\": {\n    \"key\": \"value\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "0ade2523-9b5f-4846-905f-ac3f45e6002a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "b84580da-84ac-4fa3-a7bd-ad3cc2e9ce89",
+      "name": "Instagram Share Link - default",
+      "request": {
+        "urlPathTemplate": "/api/instagram-resolver",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "link": {
+            "equalTo": "https://www.instagram.com/reel/Cexample/?igsh=MWexample"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"author\": {\n    \"key\": \"value\"\n  },\n  \"sharer\": {\n    \"key\": \"value\"\n  },\n  \"entity_id\": \"entity_id\",\n  \"_meta\": {\n    \"plan\": \"plan\",\n    \"lookups_left\": 1.1\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b84580da-84ac-4fa3-a7bd-ad3cc2e9ce89",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "21d1cb4c-afe1-426c-8229-b141282f0516",
+      "name": "VIN Decoder - default",
+      "request": {
+        "urlPathTemplate": "/api/vin",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "1HGCM82633A004352"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"Count\": 1,\n  \"Message\": \"Results returned successfully\",\n  \"Results\": [\n    {\n      \"Make\": \"HONDA\",\n      \"Model\": \"Accord\",\n      \"ModelYear\": \"2003\",\n      \"VIN\": \"1HGCM82633A004352\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "21d1cb4c-afe1-426c-8229-b141282f0516",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "5a677d90-9777-4fb1-bcb0-51790a39b973",
+      "name": "Chilean Person Search - default",
+      "request": {
+        "urlPathTemplate": "/api/chilean-name",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "Juan Perez"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"key\": \"value\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "5a677d90-9777-4fb1-bcb0-51790a39b973",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "74cd98a1-3039-433b-984f-d77b82203f29",
+      "name": "Chilean Vehicle Search - default",
+      "request": {
+        "urlPathTemplate": "/api/chilean-car",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "ABCD12"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"key\": \"value\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "74cd98a1-3039-433b-984f-d77b82203f29",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    }
+  ],
+  "meta": {
+    "total": 24
+  }
+}
