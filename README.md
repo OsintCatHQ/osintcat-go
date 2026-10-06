@@ -121,6 +121,8 @@ defer cancel()
 client := osintcatclient.NewClient(option.WithHTTPClient(&http.Client{Timeout: 60 * time.Second}))
 ```
 
+Source code: [github.com/OsintCatHQ/osintcat-go](https://github.com/OsintCatHQ/osintcat-go). Issues are welcome there.
+
 ## Links
 
 - [API documentation](https://docs.osintcat.net)
