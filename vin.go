@@ -3,9 +3,7 @@
 package osintcat
 
 import (
-	json "encoding/json"
 	fmt "fmt"
-	internal "github.com/OsintCatHQ/osintcat-go/internal"
 	big "math/big"
 )
 
@@ -175,127 +173,8 @@ func (q *QueryVinRequest) SetUnits(units *QueryVinRequestUnits) {
 	q.require(queryVinRequestFieldUnits)
 }
 
-// The decoder's answer for the chosen `type`, typically `{"Count": n, "Message": "...", "Results": [...]}`. Decoded VINs are cached for an hour.
-var (
-	vinResponseFieldCount   = big.NewInt(1 << 0)
-	vinResponseFieldMessage = big.NewInt(1 << 1)
-	vinResponseFieldResults = big.NewInt(1 << 2)
-)
-
-type VinResponse struct {
-	Count   *int             `json:"Count,omitempty" url:"Count,omitempty"`
-	Message *string          `json:"Message,omitempty" url:"Message,omitempty"`
-	Results []map[string]any `json:"Results,omitempty" url:"Results,omitempty"`
-
-	// Private bitmask of fields set to an explicit value and therefore not to be omitted
-	explicitFields *big.Int `json:"-" url:"-"`
-
-	ExtraProperties map[string]interface{} `json:"-" url:"-"`
-
-	rawJSON json.RawMessage
-}
-
-func (v *VinResponse) GetCount() *int {
-	if v == nil {
-		return nil
-	}
-	return v.Count
-}
-
-func (v *VinResponse) GetMessage() *string {
-	if v == nil {
-		return nil
-	}
-	return v.Message
-}
-
-func (v *VinResponse) GetResults() []map[string]any {
-	if v == nil {
-		return nil
-	}
-	return v.Results
-}
-
-func (v *VinResponse) GetExtraProperties() map[string]interface{} {
-	if v == nil {
-		return nil
-	}
-	return v.ExtraProperties
-}
-
-func (v *VinResponse) require(field *big.Int) {
-	if v.explicitFields == nil {
-		v.explicitFields = big.NewInt(0)
-	}
-	v.explicitFields.Or(v.explicitFields, field)
-}
-
-// SetCount sets the Count field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (v *VinResponse) SetCount(count *int) {
-	v.Count = count
-	v.require(vinResponseFieldCount)
-}
-
-// SetMessage sets the Message field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (v *VinResponse) SetMessage(message *string) {
-	v.Message = message
-	v.require(vinResponseFieldMessage)
-}
-
-// SetResults sets the Results field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (v *VinResponse) SetResults(results []map[string]any) {
-	v.Results = results
-	v.require(vinResponseFieldResults)
-}
-
-func (v *VinResponse) UnmarshalJSON(data []byte) error {
-	type embed VinResponse
-	var unmarshaler = struct {
-		embed
-	}{
-		embed: embed(*v),
-	}
-	if err := json.Unmarshal(data, &unmarshaler); err != nil {
-		return err
-	}
-	*v = VinResponse(unmarshaler.embed)
-	extraProperties, err := internal.ExtractExtraProperties(data, *v)
-	if err != nil {
-		return err
-	}
-	v.ExtraProperties = extraProperties
-	v.rawJSON = json.RawMessage(data)
-	return nil
-}
-
-func (v *VinResponse) MarshalJSON() ([]byte, error) {
-	type embed VinResponse
-	var marshaler = struct {
-		embed
-	}{
-		embed: embed(*v),
-	}
-	explicitMarshaler := internal.HandleExplicitFields(marshaler, v.explicitFields)
-	return internal.MarshalJSONWithExtraProperties(explicitMarshaler, v.ExtraProperties)
-}
-
-func (v *VinResponse) String() string {
-	if v == nil {
-		return "<nil>"
-	}
-	if len(v.rawJSON) > 0 {
-		if value, err := internal.StringifyJSON(v.rawJSON); err == nil {
-			return value
-		}
-	}
-	if value, err := internal.StringifyJSON(v); err == nil {
-		return value
-	}
-	return fmt.Sprintf("%#v", v)
-}
+// The answer depends on `type`: `decode` and `wmi` return one object with the decoded fields (empty strings for fields the VIN does not carry); `batch` and the catalogue types return a list. Decoded VINs are cached for an hour.
+type VinResponse = any
 
 type QueryVinRequestType string
 

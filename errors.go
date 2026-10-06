@@ -7,30 +7,6 @@ import (
 	core "github.com/OsintCatHQ/osintcat-go/core"
 )
 
-// The lookup could not be completed.
-type BadGatewayError struct {
-	*core.APIError
-	Body *Error
-}
-
-func (b *BadGatewayError) UnmarshalJSON(data []byte) error {
-	var body *Error
-	if err := json.Unmarshal(data, &body); err != nil {
-		return err
-	}
-	b.StatusCode = 502
-	b.Body = body
-	return nil
-}
-
-func (b *BadGatewayError) MarshalJSON() ([]byte, error) {
-	return json.Marshal(b.Body)
-}
-
-func (b *BadGatewayError) Unwrap() error {
-	return b.APIError
-}
-
 // The request is not valid.
 type BadRequestError struct {
 	*core.APIError
@@ -55,6 +31,30 @@ func (b *BadRequestError) Unwrap() error {
 	return b.APIError
 }
 
+// The lookup could not be completed: a data source failed or was too slow (the X-Upstream-Status header says which). Not charged.
+type FailedDependencyError struct {
+	*core.APIError
+	Body *Error
+}
+
+func (f *FailedDependencyError) UnmarshalJSON(data []byte) error {
+	var body *Error
+	if err := json.Unmarshal(data, &body); err != nil {
+		return err
+	}
+	f.StatusCode = 424
+	f.Body = body
+	return nil
+}
+
+func (f *FailedDependencyError) MarshalJSON() ([]byte, error) {
+	return json.Marshal(f.Body)
+}
+
+func (f *FailedDependencyError) Unwrap() error {
+	return f.APIError
+}
+
 // The key was revoked or has expired, lacks the scope, comes from an address it is not allowed from, or the plan does not include the module.
 type ForbiddenError struct {
 	*core.APIError
@@ -77,30 +77,6 @@ func (f *ForbiddenError) MarshalJSON() ([]byte, error) {
 
 func (f *ForbiddenError) Unwrap() error {
 	return f.APIError
-}
-
-// The lookup took too long.
-type GatewayTimeoutError struct {
-	*core.APIError
-	Body *Error
-}
-
-func (g *GatewayTimeoutError) UnmarshalJSON(data []byte) error {
-	var body *Error
-	if err := json.Unmarshal(data, &body); err != nil {
-		return err
-	}
-	g.StatusCode = 504
-	g.Body = body
-	return nil
-}
-
-func (g *GatewayTimeoutError) MarshalJSON() ([]byte, error) {
-	return json.Marshal(g.Body)
-}
-
-func (g *GatewayTimeoutError) Unwrap() error {
-	return g.APIError
 }
 
 // Nothing was found.

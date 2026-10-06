@@ -65,7 +65,7 @@ func (c *Client) Player(
 //
 // Errors:
 // - 400 `invalid query type`: `type` is missing or not one of the allowed values; `allowed_types` lists them.
-// - 502 `Upstream returned an empty response`: The search could not be completed; the response carries an `error_id`.
+// - 424 `Upstream returned an empty response`: The search could not be completed; the response carries an `error_id`.
 //
 // Docs: https://docs.osintcat.net/api-reference/endpoint/minecraft-osint
 func (c *Client) Leaks(

@@ -66,8 +66,8 @@ func (c *Client) Search(
 // Counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, the lookup can continue at a per-lookup price charged to your balance (the module's page in the dashboard shows the price); a lookup that finds nothing is not charged.
 //
 // Errors:
-// - 502 `Upstream error`: The search backend answered with an error. Not charged.
-// - 504 `timeout error`: The search backend did not answer in time. Not charged.
+// - 424 `Upstream error`: The search backend answered with an error. Not charged.
+// - 424 `timeout error`: The search backend did not answer in time. Not charged.
 //
 // Docs: https://docs.osintcat.net/api-reference/endpoint/database-search
 func (c *Client) DatabaseSearch(
@@ -92,7 +92,7 @@ func (c *Client) DatabaseSearch(
 //
 // Errors:
 // - 404 `No results found`: Nothing was found for the domain.
-// - 502 `Upstream error`: The search could not be completed; the response carries an `error_id`.
+// - 424 `Upstream error`: The search could not be completed; the response carries an `error_id`.
 //
 // Docs: https://docs.osintcat.net/api-reference/endpoint/domain
 func (c *Client) Domain(

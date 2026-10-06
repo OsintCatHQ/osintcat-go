@@ -189,8 +189,8 @@ Searches stealer-log and combo-list collections for an e-mail address or a domai
 Counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, the lookup can continue at a per-lookup price charged to your balance (the module's page in the dashboard shows the price); a lookup that finds nothing is not charged.
 
 Errors:
-- 502 `Upstream error`: The search backend answered with an error. Not charged.
-- 504 `timeout error`: The search backend did not answer in time. Not charged.
+- 424 `Upstream error`: The search backend answered with an error. Not charged.
+- 424 `timeout error`: The search backend did not answer in time. Not charged.
 
 Docs: https://docs.osintcat.net/api-reference/endpoint/database-search
 </dd>
@@ -267,7 +267,7 @@ Counts as one lookup against your plan's daily allowance (Max: unlimited). When 
 
 Errors:
 - 404 `No results found`: Nothing was found for the domain.
-- 502 `Upstream error`: The search could not be completed; the response carries an `error_id`.
+- 424 `Upstream error`: The search could not be completed; the response carries an `error_id`.
 
 Docs: https://docs.osintcat.net/api-reference/endpoint/domain
 </dd>
@@ -341,7 +341,7 @@ Errors:
 - 400 `USER_AGENT_IDENTITY_REQUIRED`: No purpose given.
 - 401 `API key required`: No `X-API-KEY` header.
 - 402 `INSUFFICIENT_BALANCE`: Your balance does not cover the lookup.
-- 502 `Provider Error`: The lookup could not be completed. Not charged.
+- 424 `Provider Error`: The lookup could not be completed. Not charged.
 
 Docs: https://docs.osintcat.net/api-reference/endpoint/email-osint
 </dd>
@@ -420,8 +420,8 @@ Counts as one lookup against your plan's daily allowance (Max: unlimited). When 
 
 Errors:
 - 400 `phone_*`: The number cannot be a valid phone number; `code` says why (e.g. `phone_too_short`).
-- 502 `Upstream provider error`: The lookup could not be completed.
-- 504 `The request timed out.`: The lookup took too long.
+- 424 `Upstream provider error`: The lookup could not be completed.
+- 424 `The request timed out.`: The lookup took too long.
 
 Docs: https://docs.osintcat.net/api-reference/endpoint/phone-osint
 </dd>
@@ -698,7 +698,7 @@ Counts as one lookup against your plan's daily allowance (Max: unlimited). When 
 
 Errors:
 - 400 `invalid query type`: `type` is missing or not one of the allowed values; `allowed_types` lists them.
-- 502 `Upstream returned an empty response`: The search could not be completed; the response carries an `error_id`.
+- 424 `Upstream returned an empty response`: The search could not be completed; the response carries an `error_id`.
 
 Docs: https://docs.osintcat.net/api-reference/endpoint/minecraft-osint
 </dd>
@@ -1326,7 +1326,7 @@ Counts as one lookup against your plan's daily allowance (Max: unlimited). When 
 Errors:
 - 400 `Provide a valid TikTok short link via ?link=...`: No link, or not a TikTok link.
 - 404 `No user found for this link`: The link carries no sharer.
-- 502 `Could not resolve link`: The link could not be resolved right now.
+- 424 `Could not resolve link`: The link could not be resolved right now.
 
 Docs: https://docs.osintcat.net/api-reference/endpoint/tiktok-resolver
 </dd>
@@ -1397,7 +1397,7 @@ Counts as one lookup against your plan's daily allowance (Max: unlimited). When 
 Errors:
 - 400 `Provide a valid Instagram URL via ?link=...`: No link, not an Instagram link, or the link expired or points to a private post. Not charged.
 - 422 `profile_link`: A profile link: only post and reel share links can be resolved. Not charged.
-- 502 `(message)`: The link could not be resolved right now. Not charged.
+- 424 `(message)`: The link could not be resolved right now. Not charged.
 
 Docs: https://docs.osintcat.net/api-reference/endpoint/instagram-resolver
 </dd>
@@ -1449,7 +1449,7 @@ client.Instagram.ResolveShareLink(
 </details>
 
 ## Vin
-<details><summary><code>client.Vin.Query() -> *osintcat.VinResponse</code></summary>
+<details><summary><code>client.Vin.Query() -> osintcat.VinResponse</code></summary>
 <dl>
 <dd>
 

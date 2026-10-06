@@ -52,7 +52,7 @@ func (c *Client) Query(
 	ctx context.Context,
 	request *osintcat.QueryVinRequest,
 	opts ...option.RequestOption,
-) (*osintcat.VinResponse, error) {
+) (osintcat.VinResponse, error) {
 	response, err := c.WithRawResponse.Query(
 		ctx,
 		request,

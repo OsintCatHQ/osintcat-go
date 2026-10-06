@@ -101,7 +101,7 @@ if errors.As(err, &limited) {
 | 403 | The key was revoked or has expired, lacks the scope, is used from an address it is not allowed from, or your plan does not include the module. |
 | 404 | Nothing was found. |
 | 429 | The daily allowance is used up (`LIMIT_REACHED`, resets at 00:00 UTC), or too many requests in a short time. |
-| 502 / 504 | The lookup could not be completed or took too long. |
+| 424 | The lookup could not be completed: a data source failed or was too slow (`X-Upstream-Status` says which). |
 
 Every error body carries `error` and usually `message`; some add `error_id` (quote it to support) or `code`.
 

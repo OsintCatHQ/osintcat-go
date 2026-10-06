@@ -36,7 +36,7 @@ func (r *RawClient) Query(
 	ctx context.Context,
 	request *osintcat.QueryVinRequest,
 	opts ...option.RequestOption,
-) (*core.Response[*osintcat.VinResponse], error) {
+) (*core.Response[osintcat.VinResponse], error) {
 	options := core.NewRequestOptions(opts...)
 	baseURL := internal.ResolveBaseURL(
 		options.BaseURL,
@@ -55,7 +55,7 @@ func (r *RawClient) Query(
 		r.options.ToHeader(),
 		options.ToHeader(),
 	)
-	var response *osintcat.VinResponse
+	var response osintcat.VinResponse
 	raw, err := r.caller.Call(
 		ctx,
 		&internal.CallParams{
@@ -74,7 +74,7 @@ func (r *RawClient) Query(
 	if err != nil {
 		return nil, err
 	}
-	return &core.Response[*osintcat.VinResponse]{
+	return &core.Response[osintcat.VinResponse]{
 		StatusCode: raw.StatusCode,
 		Header:     raw.Header,
 		Body:       response,
