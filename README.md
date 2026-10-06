@@ -110,7 +110,7 @@ if errors.As(err, &limited) {
 | 429 | The daily allowance is used up (`LIMIT_REACHED`, resets at 00:00 UTC), or too many requests in a short time. |
 | 424 | The lookup could not be completed: a data source failed or was too slow (`X-Upstream-Status` says which). |
 
-Every error body carries `error` and usually `message`; some add `error_id` (quote it to support) or `code`.
+Every error body carries `error`, usually `message`, and `request_id`; a server error (5xx) also `error_id`. Quote them to support.
 
 ## Retries
 
