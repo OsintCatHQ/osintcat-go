@@ -883,9 +883,258 @@
         }
       },
       "postServeActions": []
+    },
+    {
+      "id": "28aa105a-8eb2-4acc-8cdc-2a5c1f442e89",
+      "name": "Machine Viewer statistics - default",
+      "request": {
+        "urlPathTemplate": "/api/machine_viewer/stats",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total_machines\": 1,\n  \"total_files\": 1,\n  \"total_passwords\": 1,\n  \"total_unique_passwords\": 1,\n  \"total_tokens\": 1,\n  \"total_cookies\": 1,\n  \"total_credit_cards\": 1,\n  \"total_size\": 1\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "28aa105a-8eb2-4acc-8cdc-2a5c1f442e89",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "6cd55c2d-d7b0-4691-a54f-9fb2bf25c4b6",
+      "name": "Search machines - default",
+      "request": {
+        "urlPathTemplate": "/api/machine_viewer/search",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "query": {
+            "equalTo": "DESKTOP"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"query\": \"query\",\n  \"total\": 1,\n  \"machines\": [\n    {\n      \"id\": \"id\",\n      \"name\": \"name\",\n      \"imported_at\": \"imported_at\",\n      \"country\": \"country\",\n      \"ip\": \"ip\",\n      \"file_count\": 1,\n      \"total_size\": 1,\n      \"has_passwords\": true,\n      \"password_count\": 1,\n      \"unique_password_count\": 1,\n      \"has_tokens\": true,\n      \"token_count\": 1,\n      \"has_cookies\": true,\n      \"cookie_count\": 1,\n      \"has_credit_cards\": true,\n      \"credit_card_count\": 1\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "6cd55c2d-d7b0-4691-a54f-9fb2bf25c4b6",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "de9c1cbd-4e39-4141-b6d4-8c468299c614",
+      "name": "Machine details - default",
+      "request": {
+        "urlPathTemplate": "/api/machine_viewer/machines/{machine_id}/info",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "machine_id": {
+            "equalTo": "742e1f66-f449-4a6c-80d5-8f5eb8e9c2b5"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"machine\": {\n    \"id\": \"id\",\n    \"name\": \"name\",\n    \"imported_at\": \"imported_at\",\n    \"country\": \"country\",\n    \"ip\": \"ip\",\n    \"file_count\": 1,\n    \"total_size\": 1,\n    \"has_passwords\": true,\n    \"password_count\": 1,\n    \"unique_password_count\": 1,\n    \"has_tokens\": true,\n    \"token_count\": 1,\n    \"has_cookies\": true,\n    \"cookie_count\": 1,\n    \"has_credit_cards\": true,\n    \"credit_card_count\": 1\n  },\n  \"emails\": [\n    \"emails\"\n  ],\n  \"tokens\": [\n    \"tokens\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "de9c1cbd-4e39-4141-b6d4-8c468299c614",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2bc02ad9-3594-45c0-be7c-630fefd7b927",
+      "name": "Machine files - default",
+      "request": {
+        "urlPathTemplate": "/api/machine_viewer/machines/{machine_id}/files/treeview",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "machine_id": {
+            "equalTo": "742e1f66-f449-4a6c-80d5-8f5eb8e9c2b5"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"tree\": [\n    {\n      \"id\": \"id\",\n      \"name\": \"name\",\n      \"path\": \"path\",\n      \"size\": 1,\n      \"type\": \"type\",\n      \"is_password_file\": true,\n      \"is_token_file\": true\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2bc02ad9-3594-45c0-be7c-630fefd7b927",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "7d2bbb5c-8b31-4dce-befe-6f2b0bbdcc41",
+      "name": "File content - default",
+      "request": {
+        "urlPathTemplate": "/api/machine_viewer/files/{file_id}/info",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "file_id": {
+            "equalTo": "aB3dE5fG7hI9jK1lM3nO"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"info\": {\n    \"id\": \"id\",\n    \"machine_id\": \"machine_id\",\n    \"machine_name\": \"machine_name\",\n    \"path\": \"path\",\n    \"filename\": \"filename\",\n    \"size\": 1,\n    \"content\": \"content\",\n    \"is_password_file\": true,\n    \"is_token_file\": true\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "7d2bbb5c-8b31-4dce-befe-6f2b0bbdcc41",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fdf3f904-db28-4756-8ba4-f361103b6078",
+      "name": "Download a file - default",
+      "request": {
+        "urlPathTemplate": "/api/machine_viewer/files/{file_id}/download",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "file_id": {
+            "equalTo": "file_id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fdf3f904-db28-4756-8ba4-f361103b6078",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "37286052-928d-492f-92dd-128552bf183d",
+      "name": "Download a machine - default",
+      "request": {
+        "urlPathTemplate": "/api/machine_viewer/machines/{machine_id}/download",
+        "method": "GET",
+        "headers": {
+          "X-API-KEY": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "machine_id": {
+            "equalTo": "machine_id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "37286052-928d-492f-92dd-128552bf183d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
     }
   ],
   "meta": {
-    "total": 24
+    "total": 31
   }
 }

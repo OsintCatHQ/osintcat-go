@@ -16,6 +16,7 @@ import (
 	instagram "github.com/OsintCatHQ/osintcat-go/instagram"
 	internal "github.com/OsintCatHQ/osintcat-go/internal"
 	ip "github.com/OsintCatHQ/osintcat-go/ip"
+	machineviewer "github.com/OsintCatHQ/osintcat-go/machineviewer"
 	minecraft "github.com/OsintCatHQ/osintcat-go/minecraft"
 	option "github.com/OsintCatHQ/osintcat-go/option"
 	phone "github.com/OsintCatHQ/osintcat-go/phone"
@@ -29,24 +30,25 @@ import (
 )
 
 type Client struct {
-	Account   *account.Client
-	Breach    *breach.Client
-	Email     *email.Client
-	Phone     *phone.Client
-	IP        *ip.Client
-	DNS       *dns.Client
-	Minecraft *minecraft.Client
-	Steam     *steam.Client
-	Xbox      *xbox.Client
-	Twitch    *twitch.Client
-	Chess     *chess.Client
-	Github    *github.Client
-	Reddit    *reddit.Client
-	X         *x.Client
-	Tiktok    *tiktok.Client
-	Instagram *instagram.Client
-	Vin       *vin.Client
-	Chile     *chile.Client
+	Account       *account.Client
+	Breach        *breach.Client
+	Email         *email.Client
+	Phone         *phone.Client
+	IP            *ip.Client
+	DNS           *dns.Client
+	Minecraft     *minecraft.Client
+	Steam         *steam.Client
+	Xbox          *xbox.Client
+	Twitch        *twitch.Client
+	Chess         *chess.Client
+	Github        *github.Client
+	Reddit        *reddit.Client
+	X             *x.Client
+	Tiktok        *tiktok.Client
+	Instagram     *instagram.Client
+	Vin           *vin.Client
+	Chile         *chile.Client
+	MachineViewer *machineviewer.Client
 
 	options *core.RequestOptions
 	baseURL string
@@ -59,26 +61,27 @@ func NewClient(opts ...option.RequestOption) *Client {
 		options.APIKey = os.Getenv("OSINTCAT_API_KEY")
 	}
 	return &Client{
-		Account:   account.NewClient(options),
-		Breach:    breach.NewClient(options),
-		Email:     email.NewClient(options),
-		Phone:     phone.NewClient(options),
-		IP:        ip.NewClient(options),
-		DNS:       dns.NewClient(options),
-		Minecraft: minecraft.NewClient(options),
-		Steam:     steam.NewClient(options),
-		Xbox:      xbox.NewClient(options),
-		Twitch:    twitch.NewClient(options),
-		Chess:     chess.NewClient(options),
-		Github:    github.NewClient(options),
-		Reddit:    reddit.NewClient(options),
-		X:         x.NewClient(options),
-		Tiktok:    tiktok.NewClient(options),
-		Instagram: instagram.NewClient(options),
-		Vin:       vin.NewClient(options),
-		Chile:     chile.NewClient(options),
-		options:   options,
-		baseURL:   options.BaseURL,
+		Account:       account.NewClient(options),
+		Breach:        breach.NewClient(options),
+		Email:         email.NewClient(options),
+		Phone:         phone.NewClient(options),
+		IP:            ip.NewClient(options),
+		DNS:           dns.NewClient(options),
+		Minecraft:     minecraft.NewClient(options),
+		Steam:         steam.NewClient(options),
+		Xbox:          xbox.NewClient(options),
+		Twitch:        twitch.NewClient(options),
+		Chess:         chess.NewClient(options),
+		Github:        github.NewClient(options),
+		Reddit:        reddit.NewClient(options),
+		X:             x.NewClient(options),
+		Tiktok:        tiktok.NewClient(options),
+		Instagram:     instagram.NewClient(options),
+		Vin:           vin.NewClient(options),
+		Chile:         chile.NewClient(options),
+		MachineViewer: machineviewer.NewClient(options),
+		options:       options,
+		baseURL:       options.BaseURL,
 		caller: internal.NewCaller(
 			&internal.CallerParams{
 				Client:         options.HTTPClient,

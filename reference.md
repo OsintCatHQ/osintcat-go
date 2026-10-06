@@ -1764,3 +1764,440 @@ client.Chile.Vehicle(
 </dl>
 </details>
 
+## MachineViewer
+<details><summary><code>client.MachineViewer.Stats() -> *osintcat.MachineViewerStats</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+How many machines, files, passwords, tokens, cookies and payment cards the Machine Viewer holds.
+
+Every Machine Viewer request counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, requests can continue at a per-lookup price charged to your balance; a search that finds nothing is not charged.
+
+Docs: https://docs.osintcat.net/api-reference/endpoint/machine-viewer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+client.MachineViewer.Stats(
+        context.TODO(),
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.MachineViewer.Search() -> *osintcat.MachineSearchResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches machines by name, username, hostname or machine ID.
+
+Every Machine Viewer request counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, requests can continue at a per-lookup price charged to your balance; a search that finds nothing is not charged.
+
+Docs: https://docs.osintcat.net/api-reference/endpoint/machine-viewer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &osintcat.SearchMachineViewerRequest{
+        Query: "DESKTOP",
+    }
+client.MachineViewer.Search(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**query:** `string` — What to search for: a name, username, hostname or machine ID.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.MachineViewer.Machine(MachineID) -> *osintcat.MachineInfoResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+One machine, with the e-mail addresses and tokens found on it.
+
+Every Machine Viewer request counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, requests can continue at a per-lookup price charged to your balance; a search that finds nothing is not charged.
+
+Docs: https://docs.osintcat.net/api-reference/endpoint/machine-viewer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &osintcat.MachineMachineViewerRequest{
+        MachineID: "742e1f66-f449-4a6c-80d5-8f5eb8e9c2b5",
+    }
+client.MachineViewer.Machine(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**machineID:** `string` — Machine ID (a UUID), from `machineViewer.search`.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.MachineViewer.Files(MachineID) -> *osintcat.MachineFilesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Every file of a machine, with its path and size. Use a file's `id` with `machineViewer.file`.
+
+Every Machine Viewer request counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, requests can continue at a per-lookup price charged to your balance; a search that finds nothing is not charged.
+
+Docs: https://docs.osintcat.net/api-reference/endpoint/machine-viewer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &osintcat.FilesMachineViewerRequest{
+        MachineID: "742e1f66-f449-4a6c-80d5-8f5eb8e9c2b5",
+    }
+client.MachineViewer.Files(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**machineID:** `string` — Machine ID (a UUID), from `machineViewer.search`.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.MachineViewer.File(FileID) -> *osintcat.MachineFileResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+One file, with its content as text.
+
+Every Machine Viewer request counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, requests can continue at a per-lookup price charged to your balance; a search that finds nothing is not charged.
+
+Docs: https://docs.osintcat.net/api-reference/endpoint/machine-viewer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &osintcat.FileMachineViewerRequest{
+        FileID: "aB3dE5fG7hI9jK1lM3nO",
+    }
+client.MachineViewer.File(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**fileID:** `string` — File ID, from `machineViewer.files`.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.MachineViewer.DownloadFile(FileID) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+The file itself, as it was in the log.
+
+Every Machine Viewer request counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, requests can continue at a per-lookup price charged to your balance; a search that finds nothing is not charged.
+
+Docs: https://docs.osintcat.net/api-reference/endpoint/machine-viewer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &osintcat.DownloadFileMachineViewerRequest{
+        FileID: "file_id",
+    }
+client.MachineViewer.DownloadFile(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**fileID:** `string` — File ID, from `machineViewer.files`.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.MachineViewer.DownloadMachine(MachineID) -> string</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Every file of a machine in one ZIP archive.
+
+Every Machine Viewer request counts as one lookup against your plan's daily allowance (Max: unlimited). When the allowance is used up, requests can continue at a per-lookup price charged to your balance; a search that finds nothing is not charged.
+
+Docs: https://docs.osintcat.net/api-reference/endpoint/machine-viewer
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &osintcat.DownloadMachineMachineViewerRequest{
+        MachineID: "machine_id",
+    }
+client.MachineViewer.DownloadMachine(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**machineID:** `string` — Machine ID (a UUID), from `machineViewer.search`.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
