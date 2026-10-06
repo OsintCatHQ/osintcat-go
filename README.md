@@ -8,7 +8,7 @@ go get github.com/OsintCatHQ/osintcat-go
 
 ## API key
 
-Create a key under [Account > Developer](https://www.osintcat.net/account/developer). A key is shown once; you choose its scopes and when it
+Create a key under [Settings > Developer](https://www.osintcat.net/account/developer). A key is shown once; you choose its scopes and when it
 expires. Keep it on the server: never ship it in a browser or mobile app.
 
 The SDK reads the key from the `OSINTCAT_API_KEY` environment variable when you do not pass one, and sends it
